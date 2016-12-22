@@ -6,7 +6,7 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 var args = process.argv.slice(2);
-var git = 'ssh://git@g.hz.netease.com:22222/HeartTouchOpen/HTProjectTemplate.git';
+var git = 'https://github.com/NEYouFan/ht-projecttemplate-ios.git';
 var params = '';
 var flag = false;
 args.forEach(function (val, index, array) {
