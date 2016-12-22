@@ -1,6 +1,6 @@
 {
   "name": "ht_template",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "a tool to auto generate iOS Project Template by NetEase",
   "main": "install.js",
   "bin": {
