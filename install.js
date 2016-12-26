@@ -5,6 +5,7 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
+var version = '1.0.4'
 var args = process.argv.slice(2);
 var git = 'https://github.com/NEYouFan/ht-projecttemplate-ios.git';
 var params = '';
@@ -32,7 +33,10 @@ if (params == ' -help' || params == ' -h') {
 	console.log('-w（可选）			是否覆盖已存在的文件，默认为false');	
 	return;
 }
-console.log('git:' + git);
+if (params == ' -version' || params == ' -v') {
+	console.log('ht_tempalte version is:' + version);
+	return;
+}
 console.log('params: ' + params);
 var exec = require('child_process').exec; 	
 exec('pwd',function(err,stdout,stderr){
@@ -40,24 +44,24 @@ exec('pwd',function(err,stdout,stderr){
 
 exec('mkdir HTTempplate',function(err,stdout,stderr){
 });
-
+console.log('git cloning... from:' + git);
 exec('git clone '+git+' HTTempplate',function(err,stdout,stderr){
 	console.log(stdout);
 	if (!err) {
-		console.log('git cloning...');
 		exec('nei template -p ./HTTempplate/HTLocalProjectTemplate/' + params,function(err,stdout,stderr){
 			if (!err) {
 				exec('rm -rf HTTempplate',function(err,stdout,stderr){
 					console.log(stdout);
 					if (!err) {
 						console.log('removing HTTempplate...');
-						console.log('All Done!!!')
+						console.log('All Done!')
 					} else {
 						console.log('err in removing HTTempplate:' + err);
 					}
 				});				
 		} else {
 				console.log('err in nei:' + err);
+				console.log('stderr is:' + stderr);
 			}
 		});
 		
